@@ -11,36 +11,27 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-         /*     SpeechSynthesizer synth = new SpeechSynthesizer();
-               synth.Speak("Hello! This is a grade book program!"); */
+            /*
+           SpeechSynthesizer synth = new SpeechSynthesizer();
+               synth.Speak("Hello my name is Remey I love my mom and I will never play on my phone again"); */
 
             GradeBook book = new GradeBook();
 
-            book.NameChanged = new NameChangedDelegate(OnNameChanged);
-
-            book.Name = "Rick's Grade Book";
-            book.Name = "Grade Book";
-
+   
             book.AddGrade(91);
             book.AddGrade(89.5f);
             book.AddGrade(75);
 
             GradeStatistics stats = book.ComputeStatistics();
-            Console.WriteLine(book.Name);
             WriteResult("Average", stats.AverageGrade);
-            WriteResult("Highest", (int)stats.HighestGrade);
+            WriteResult("Highest", stats.HighestGrade);
             WriteResult("Lowest", stats.LowestGrade);
+            WriteResult("Grade", stats.LetterGrade);
         }
 
-        static void OnNameChanged(string existingName, string newName)
+        static void WriteResult(string description, string result)
         {
-            Console.WriteLine($"Grade book changing name from {existingName} to {newName}");
-        }
-
-        //Helper Methods
-        static void WriteResult(string description, int result)
-        {
-            Console.WriteLine(description + ": " + result);
+            Console.WriteLine($"{description}: {result}", description, result);
         }
 
         static void WriteResult(string description, float result)
