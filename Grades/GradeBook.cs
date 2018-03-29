@@ -12,8 +12,10 @@ namespace Grades
         //default constructor - no return type
         public GradeBook()
         {
+            _name = "Empty";
             grades = new List<float>();    
         }
+
 
         // GradeStats is returning Compute stats
         public GradeStatistics ComputeStatistics()
@@ -72,6 +74,6 @@ namespace Grades
         public event NameChangedDelegate NameChanged;
 
         private string _name;
-        private List<float> grades;
+        protected List<float> grades;
     }
 }
